@@ -38,6 +38,103 @@
     @apply text-saas-text-secondary hover:bg-gray-100 hover:text-saas-text-primary;
   }
 
+  .stp-alert-control {
+    @apply relative inline-flex items-center gap-2 rounded-2xl border px-2 py-1.5 text-left transition-all duration-200 sm:px-3 sm:py-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saas-accent/35 focus-visible:ring-offset-2;
+    background: linear-gradient(135deg, #ffffff 0%, #f8fafc 48%, #eff6ff 100%);
+    box-shadow: 0 16px 28px -22px rgba(15, 23, 42, 0.5);
+  }
+
+  .stp-alert-control:hover {
+    transform: translateY(-1px);
+  }
+
+  .stp-alert-control:active {
+    transform: translateY(0) scale(0.99);
+  }
+
+  .stp-alert-control-normal {
+    border-color: #bfdbfe;
+  }
+
+  .stp-alert-control-critical {
+    border-color: #fecaca;
+    background: linear-gradient(135deg, #fff1f2 0%, #ffe4e6 52%, #fee2e2 100%);
+    box-shadow: 0 18px 32px -20px rgba(220, 38, 38, 0.85);
+  }
+
+  .stp-alert-control-critical::after {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    border-radius: 1rem;
+    pointer-events: none;
+    animation: stp-critical-ring 1.9s ease-out infinite;
+  }
+
+  .stp-blower-shell {
+    @apply relative inline-flex h-9 w-9 items-center justify-center rounded-xl border border-white bg-white shadow-inner;
+  }
+
+  .stp-alert-dot {
+    @apply absolute -right-0.5 -top-0.5 h-2.5 w-2.5 rounded-full border border-white;
+  }
+
+  .stp-alert-dot-normal {
+    background: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+  }
+
+  .stp-alert-dot-critical {
+    background: #dc2626;
+    box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.25);
+    animation: stp-dot-pulse 1.2s ease-in-out infinite;
+  }
+
+  .stp-blower-spin-slow {
+    animation: stp-blower-spin 6s linear infinite;
+  }
+
+  .stp-blower-spin-fast {
+    animation: stp-blower-spin 1.5s linear infinite;
+  }
+
+  .stp-alert-popover {
+    @apply absolute right-0 top-[calc(100%+0.55rem)] z-50 w-80 rounded-2xl border border-slate-200 bg-white/95 p-4 text-slate-700 shadow-2xl ring-1 ring-slate-100 backdrop-blur;
+  }
+
+  @keyframes stp-blower-spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes stp-critical-ring {
+    0% {
+      box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.35);
+    }
+    70% {
+      box-shadow: 0 0 0 12px rgba(220, 38, 38, 0);
+    }
+    100% {
+      box-shadow: 0 0 0 0 rgba(220, 38, 38, 0);
+    }
+  }
+
+  @keyframes stp-dot-pulse {
+    0%,
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.55;
+      transform: scale(1.2);
+    }
+  }
+
   .custom-scrollbar::-webkit-scrollbar {
     width: 4px;
     height: 4px;
