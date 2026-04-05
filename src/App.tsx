@@ -272,11 +272,17 @@ export default function App() {
     return Array.from(new Set(latestData.map((sensor) => sensor.section))).sort();
   }, [latestData]);
 
+  const parseSensorDateTime = (sensor: SensorData): number => {
+    const [day, month, year] = sensor.date.split('/').map(Number);
+    const [hour, minute, second] = sensor.time.split(':').map(Number);
+    return new Date(year, month - 1, day, hour, minute, second).getTime();
+  };
+
   const logRows = useMemo(() => {
     const term = logSearchQuery.trim().toLowerCase();
 
     return [...latestData]
-      .sort((a, b) => Number(b.id) - Number(a.id))
+      .sort((a, b) => parseSensorDateTime(b) - parseSensorDateTime(a))
       .filter((sensor) => {
         const matchesTerm = !term || (
           sensor.sensor_name.toLowerCase().includes(term)
