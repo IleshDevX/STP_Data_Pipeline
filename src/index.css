@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  
+  --color-saas-bg: #FFFFFF;
+  --color-saas-sidebar: #F9FAFB;
+  --color-saas-border: #E5E7EB;
+  --color-saas-text-primary: #111827;
+  --color-saas-text-secondary: #6B7280;
+  --color-saas-accent: #2563EB;
+  --color-saas-accent-hover: #1D4ED8;
+}
+
+@layer base {
+  body {
+    @apply bg-saas-bg text-saas-text-primary antialiased selection:bg-saas-accent/10 selection:text-saas-accent;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11", "ss01";
+  }
+}
+
+@layer utilities {
+  .saas-card {
+    @apply bg-white rounded-xl shadow-sm ring-1 ring-slate-100/70 hover:shadow-md transition-all duration-200;
+  }
+  
+  .saas-sidebar-item {
+    @apply flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium transition-colors;
+  }
+
+  .saas-sidebar-item-active {
+    @apply bg-saas-accent/5 text-saas-accent;
+  }
+
+  .saas-sidebar-item-inactive {
+    @apply text-saas-text-secondary hover:bg-gray-100 hover:text-saas-text-primary;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-gray-200 rounded-full hover:bg-gray-300 transition-colors;
+  }
+}

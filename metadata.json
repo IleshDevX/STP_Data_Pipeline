@@ -1,0 +1,5 @@
+{
+  "name": "Smart STP Monitoring Dashboard",
+  "description": "Real-time industrial monitoring system for Sewage Treatment Plants with fault detection and analytics.",
+  "requestFramePermissions": []
+}
